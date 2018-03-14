@@ -1,0 +1,15 @@
+[Unit]
+Description=kafka Service
+After=syslog.target network.target
+
+[Service]
+# Type=forking
+ExecStart=/var/kafka/kafka_2.12-0.10.2.1/bin/kafka-server-start.sh config/server.properties 
+# ExecStop=/var/kafka/kafka_2.12-0.10.2.1/bin/kafka-server-stop.sh
+WorkingDirectory=/var/kafka/kafka_2.12-0.10.2.1
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+

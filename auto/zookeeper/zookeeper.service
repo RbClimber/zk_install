@@ -1,0 +1,16 @@
+[Unit]
+Description=zookeeper Service
+After=syslog.target network.target
+
+[Service]
+# Type=forking
+ExecStart=/var/zookeeper/zookeeper-3.4.6/bin/zkServer.sh start-foreground 
+# ExecStart=/var/zookeeper/zookeeper-3.4.6/bin/zkServer.sh start conf/zoo.cfg
+# ExecStop=/var/zookeeper/zookeeper-3.4.6/bin/zkServer.sh stop
+WorkingDirectory=/var/zookeeper/zookeeper-3.4.6
+Restart=on-failure
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+
